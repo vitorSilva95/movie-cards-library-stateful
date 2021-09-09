@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import InputMovieTitle from './InputMovieTitle';
+import InputMovieSubTitle from './InputMovieSubTitle';
+import InputMovieImage from './InputMovieImage';
+import InputMovieStoryLine from './InputMovieStoryLine';
+import InputMovieRating from './InputMovieRating';
+import InputMovieGenre from './InputMovieGenre';
 
 class AddMovie extends Component {
   constructor() {
@@ -27,46 +33,17 @@ class AddMovie extends Component {
       imagePath,
       storyline,
       rating,
-      genre
+      genre,
     } = this.state;
 
     return (
       <form action="" data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            name="title"
-            data-testid="title-input"
-            type="text"
-            value={ title }
-            id="title"
-            onChange={ this.handleState }
-          />
-        </label>
-
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle"
-            data-testid="subtitle-input"
-            type="text"
-            value={ subtitle }
-            id="subtitle"
-            onChange={ this.handleState }
-          />
-        </label>
-
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          <input
-            data-testid="image-input"
-            name="imagePath"
-            type="text"
-            value={ imagePath }
-            id="imagePath"
-            onChange={ this.handleState }
-          />
-        </label>
+        <InputMovieTitle value={ title } funcaoAtualizaPai={ this.handleState } />
+        <InputMovieSubTitle value={ subtitle } funcaoAtualizaPai={ this.handleState } />
+        <InputMovieImage value={ imagePath } funcaoAtualizaPai={ this.handleState } />
+        <InputMovieStoryLine value={ storyline } funcaoAtualizaPai={ this.handleState } />
+        <InputMovieRating value={ rating } funcaoAtualizaPai={ this.handleState } />
+        <InputMovieGenre value={ genre } funcaoAtualizaPai={ this.handleState } />
       </form>
     );
   }
