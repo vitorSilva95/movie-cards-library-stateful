@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import data from './data';
 import MovieList from './components/MovieList';
+import AddMovie from './components/AddMovie';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <SearchBar />
       <MovieList movies={ data } />
+      <AddMovie />
     </div>
   );
 }
