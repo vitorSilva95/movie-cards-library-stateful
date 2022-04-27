@@ -1,51 +1,61 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Select from './inputs/Select';
+import Input from './inputs/Input';
 
+const options = ['all', 'action', 'comedy', 'thriller'];
 class SearchBar extends Component {
-  render() {
+  formsContainer = () => {
     const { searchText,
       onSearchTextChange,
-      bookmarkedOnly,
-      onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange } = this.props;
-
     return (
-      <form data-testid="search-bar-form">
-        <label htmlFor="texto" data-testid="text-input-label">
-          Inclui o texto
-          <input
-            data-testid="text-input"
+      <div className="form-row">
+        <div className="col">
+          <Input
+            label="Inclui o texto"
+            name="searchText"
+            className="form-control form-control-sm"
             id="texto"
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
           />
-        </label>
-        <label htmlFor="checkBox" data-testid="checkbox-input-label">
-          Mostrar somente favoritos
-          <input
-            type="checkBox"
-            id="checkBox"
-            data-testid="checkbox-input"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-          />
-        </label>
-        <label htmlFor="select" data-testid="select-input-label">
-          Filtrar por gênero
-          <select
+        </div>
+        <div className="col">
+          <Select
+            label="Genero"
+            name="selectedGenre"
             id="select"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
-            data-testid="select-input"
-          >
-            <option data-testid="select-option" value="">Todos</option>
-            <option data-testid="select-option" value="action">Ação</option>
-            <option data-testid="select-option" value="comedy">Comédia</option>
-            <option data-testid="select-option" value="thriller">Suspense</option>
-          </select>
-        </label>
+            className="form-control form-control-sm"
+            array={ options }
+          />
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const { bookmarkedOnly, onBookmarkedChange } = this.props;
+
+    return (
+      <form data-testid="search-bar-form" className="forms-filter">
+        { this.formsContainer() }
+        <div className="form-check">
+          <Input
+            name="bookmarkedOnly"
+            type="checkbox"
+            id="checkBox"
+            className="form-check-input"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+          />
+          <label htmlFor="checkBox" className="form-check-label">Filtrar Favoritos</label>
+        </div>
       </form>
     );
   }
