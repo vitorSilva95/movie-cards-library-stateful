@@ -22,6 +22,7 @@ body {
 .movie-list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   padding: 48px 30px;
 }
 
@@ -39,6 +40,7 @@ body {
 
 
 .movie-card-image {
+  height: 160px;
   width: 100%;
 }
 
@@ -80,4 +82,25 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+.forms {
+  background-color: white;
+  margin: 40px auto;
+  padding: 40px;
+  width: 50%;
+}
+
+.forms-filter {
+  margin: 40px auto;
+  padding: 40px;
+  width: 50%;
+}
+
+.form-check {
+  padding-top: 20px;
+}
+
+.title-add-new-card {
+  text-align: center;
 }
